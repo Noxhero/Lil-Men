@@ -1,0 +1,454 @@
+/* Variables principales */
+:root {
+    --lil-yellow: #FFDD00;
+    --lil-pink: #FF3E96;
+    --lil-black: #111111;
+    --lil-white: #FFFFFF;
+    --lil-gray: #2D2D2D;
+    --lil-gradient: linear-gradient(135deg, #FFDD00, #FF3E96);
+}
+
+/* Import des polices Google */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=Poppins:wght@300;400;600&display=swap');
+
+/* Styles généraux */
+body {
+    font-family: 'Montserrat', 'Poppins', sans-serif;
+    background-color: var(--lil-black);
+    color: var(--lil-white);
+    overflow-x: hidden;
+    line-height: 1.8;
+    scroll-behavior: smooth;
+}
+
+/* Utilités Bulma personnalisées */
+.is-lil-pink {
+    background-color: var(--lil-pink) !important;
+    color: var(--lil-white) !important;
+    transition: all 0.3s ease;
+}
+
+.is-lil-pink:hover {
+    background-color: #D32F7D !important;
+    transform: scale(1.05);
+}
+
+.is-lil-yellow {
+    background-color: var(--lil-yellow) !important;
+    color: var(--lil-black) !important;
+    transition: all 0.3s ease;
+}
+
+.is-lil-yellow:hover {
+    background-color: #E6C200 !important;
+    transform: scale(1.05);
+}
+
+.text-lil-pink {
+    color: var(--lil-pink);
+}
+
+.text-lil-yellow {
+    color: var(--lil-yellow);
+}
+
+/* Section Hero */
+.manga-hero {
+    position: relative;
+    background: var(--lil-gradient);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.manga-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://via.placeholder.com/1920x1080');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    z-index: 1;
+    animation: heroParallax 30s infinite ease-in-out;
+}
+
+@keyframes heroParallax {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-100px) scale(1.05); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+.manga-hero .hero-body {
+    position: relative;
+    z-index: 10;
+    padding: 4rem 1rem;
+}
+
+.manga-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-shadow: 4px 4px var(--lil-pink), 6px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
+    animation: glow 2s infinite alternate;
+}
+
+@media (min-width: 640px) {
+    .manga-title { font-size: 5rem; }
+}
+@media (min-width: 1024px) {
+    .manga-title { font-size: 7rem; }
+}
+
+.manga-subtitle {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 640px) {
+    .manga-subtitle { font-size: 1.5rem; }
+}
+
+/* Couverture Manga */
+.manga-cover-container {
+    perspective: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manga-cover {
+    position: relative;
+    transform-style: preserve-3d;
+    background: var(--lil-gradient);
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+    max-width: 600px;
+    width: 100%;
+    transition: transform 0.6s ease;
+}
+
+.manga-cover:hover {
+    transform: rotateY(10deg) rotateX(5deg) scale(1.1);
+}
+
+.manga-cover-img {
+    box-shadow: -20px 25px 50px rgba(0, 0, 0, 0.6);
+    border-radius: 1rem;
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.manga-cover-img:hover {
+    transform: scale(1.15);
+    box-shadow: -25px 30px 60px rgba(0, 0, 0, 0.8);
+}
+
+.volume-number {
+    position: absolute;
+    top: -2.5rem;
+    left: -2.5rem;
+    width: 6rem;
+    height: 6rem;
+    background-color: var(--lil-yellow);
+    color: var(--lil-black);
+    font-size: 2.5rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    animation: bounce 1.5s infinite ease-in-out;
+}
+
+@media (min-width: 640px) {
+    .volume-number { font-size: 3rem; }
+}
+
+.vertical-title {
+    position: absolute;
+    right: -7rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--lil-yellow);
+    letter-spacing: 8px;
+    text-shadow: 3px 3px var(--lil-pink);
+    white-space: nowrap;
+    animation: pulse 2s infinite;
+}
+
+@media (max-width: 1024px) {
+    .vertical-title { font-size: 2rem; right: -5rem; }
+}
+
+/* Sections */
+.section {
+    padding: 6rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--lil-black), var(--lil-gray));
+}
+
+@media (min-width: 1024px) {
+    .section { padding: 8rem 3rem; }
+}
+
+/* Latest Releases Section */
+.latest-releases {
+    background: linear-gradient(45deg, var(--lil-black), var(--lil-pink));
+    position: relative;
+}
+
+.latest-releases::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 62, 150, 0.2), transparent);
+    z-index: 0;
+}
+
+.manga-item {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.manga-item:hover {
+    transform: translateY(-15px) rotate(3deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.manga-card {
+    background-color: var(--lil-gray);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease;
+}
+
+.manga-card-image {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+@media (min-width: 640px) {
+    .manga-card-image { height: 300px; }
+}
+@media (min-width: 1024px) {
+    .manga-card-image { height: 350px; }
+}
+
+.manga-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.manga-card:hover .manga-card-image img {
+    transform: scale(1.2);
+}
+
+.manga-volume-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--lil-pink);
+    color: var(--lil-white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    animation: spin 3s linear infinite;
+}
+
+.manga-card-content {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.manga-card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--lil-yellow);
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 640px) {
+    .manga-card-title { font-size: 1.5rem; }
+}
+
+.manga-card-author {
+    color: #B0B0B0;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* About Section */
+.about-section {
+    background: linear-gradient(180deg, var(--lil-gray), var(--lil-black));
+    position: relative;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background: var(--lil-gradient);
+    opacity: 0.15;
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+    z-index: 0;
+    animation: wave 12s infinite ease-in-out;
+}
+
+.manga-character-spotlight {
+    overflow: hidden;
+    border-radius: 1.5rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.5s ease;
+}
+
+.manga-character-spotlight img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.6s ease;
+}
+
+.manga-character-spotlight:hover img {
+    transform: scale(1.1) rotate(3deg);
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    background: var(--lil-gradient);
+    position: relative;
+}
+
+.newsletter-section::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(45deg, var(--lil-pink), transparent);
+    opacity: 0.2;
+    z-index: 0;
+    animation: fadeInOut 6s infinite alternate;
+}
+
+.newsletter-form .input {
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--lil-white);
+    border-radius: 9999px 0 0 9999px;
+    padding: 1rem 1.5rem;
+    transition: all 0.4s ease;
+}
+
+.newsletter-form .input:focus {
+    background-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.newsletter-form .button {
+    border-radius: 0 9999px 9999px 0;
+    padding: 1rem 2rem;
+    transition: all 0.4s ease;
+}
+
+.newsletter-form .button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Animations */
+.pulsate-btn {
+    animation: pulsate 1.8s infinite;
+}
+
+@keyframes pulsate {
+    0% { box-shadow: 0 0 0 0 rgba(255, 62, 150, 0.8); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 62, 150, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 62, 150, 0); }
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 5px var(--lil-pink), 0 0 10px var(--lil-yellow); }
+    100% { text-shadow: 0 0 20px var(--lil-pink), 0 0 30px var(--lil-yellow); }
+}
+
+@keyframes wave {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-50px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(1.05); }
+    100% { transform: translateY(-50%) scale(1); }
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0.2; }
+    100% { opacity: 0.4; }
+}
+
+/* Responsive */
+@media screen and (max-width: 640px) {
+    .manga-title { font-size: 2.8rem; }
+    .manga-subtitle { font-size: 1rem; max-width: 90%; }
+    .manga-cover { padding: 1.2rem; }
+    .volume-number { width: 4rem; height: 4rem; font-size: 1.8rem; }
+    .manga-card-image { height: 200px; }
+    .manga-card-content { padding: 1rem; }
+    .manga-card-title { font-size: 1.2rem; }
+}
+
+@media screen and (min-width: 641px) and (max-width: 1023px) {
+    .manga-title { font-size: 4rem; }
+    .manga-subtitle { font-size: 1.3rem; }
+    .manga-cover { padding: 1.5rem; }
+    .volume-number { width: 5rem; height: 5rem; font-size: 2.2rem; }
+    .manga-card-image { height: 250px; }
+    .manga-card-title { font-size: 1.3rem; }
+}

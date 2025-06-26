@@ -1,0 +1,115 @@
+/* Header & Navigation Styles */
+.navbar {
+    background-color: transparent;
+    transition: all 0.3s ease;
+    padding: 1rem 0;
+}
+
+.navbar-scrolled {
+    background-color: rgba(17, 17, 17, 0.98);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 0.5rem 0;
+}
+
+.navbar-item {
+    color: white;
+    font-weight: 600;
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.navbar-item:hover {
+    color: var(--lil-pink);
+    transform: translateY(-2px);
+}
+
+.navbar-item:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--lil-yellow), var(--lil-pink));
+    transition: width 0.3s ease;
+}
+
+.navbar-item:hover:before,
+.navbar-item.is-active:before {
+    width: 80%;
+}
+
+.logo-text {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--lil-pink);
+    text-shadow: 2px 2px var(--lil-yellow);
+    transition: all 0.3s ease;
+}
+
+.navbar-scrolled .logo-text {
+    font-size: 1.75rem;
+}
+
+.navbar-burger {
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.navbar-burger:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+.nav-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, var(--lil-yellow), var(--lil-pink));
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+    transform: translateX(0);
+}
+
+/* Responsive Navigation */
+@media screen and (max-width: 1023px) {
+    .navbar-menu {
+        background-color: var(--lil-black);
+        backdrop-filter: blur(10px);
+    }
+    
+    .navbar-menu.is-active {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .navbar-item {
+        color: white;
+        padding: 1rem;
+    }
+    
+    .nav-link::after {
+        display: none;
+    }
+    
+    .navbar-item:hover {
+        background: linear-gradient(to right, var(--lil-yellow), var(--lil-pink));
+        color: white;
+        transform: translateX(10px);
+    }
+}
